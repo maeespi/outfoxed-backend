@@ -26,7 +26,7 @@ def serve_openapi():
 
 if __name__ == "__main__":
     print("Starting OutFoxed API server...")
-app.run(debug=True, host="0.0.0.0", port=10000)
+    app.run(debug=True, host="0.0.0.0", port=10000)
 
 
 
