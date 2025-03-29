@@ -22,7 +22,7 @@ def start_timer():
     })
 @app.route("/openapi.yaml", methods=["GET"])
 def serve_openapi():
-    return send_file("openapi.yaml", mimetype="text/yaml")
+    return send_file("openapi.yaml", mimetype="application/yaml")
 
 if __name__ == "__main__":
     print("Starting OutFoxed API server...")
