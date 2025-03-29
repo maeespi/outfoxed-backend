@@ -1,0 +1,34 @@
+openapi: 3.0.0
+info:
+  title: OutFoxed API
+  version: 1.0.0
+servers:
+  - url: https://outfoxed-backend.onrender.com
+paths:
+  /start-timer:
+    post:
+      operationId: startPomodoroTimer
+      summary: Start a Pomodoro timer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                duration:
+                  type: integer
+                  description: Duration of the timer in minutes
+                  default: 25
+      responses:
+        "200":
+          description: Timer started message
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  duration:
+                    type: integer
