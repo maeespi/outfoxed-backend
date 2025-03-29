@@ -24,9 +24,17 @@ def start_timer():
 def serve_openapi():
     return send_file("openapi.yaml", mimetype="application/yaml")
 
+@app.route("/privacy-policy", methods=["GET"])
+def privacy_policy():
+    return """
+    <h1>OutFoxed Privacy Policy</h1>
+    <p>This is a student portfolio project. No personal data is stored or shared.</p>
+    """
 if __name__ == "__main__":
     print("Starting OutFoxed API server...")
     app.run(debug=True, host="0.0.0.0", port=10000)
+
+
 
 
 
