@@ -118,6 +118,19 @@ def demo_page():
       </body>
     </html>
     """
+@app.route("/log-session", methods=["POST"])
+def log_session():
+    data = request.get_json()
+    summary = data.get("summary", "No summary provided.")
+    mood = data.get("mood", "neutral")
+
+    response_message = f"Got it! You logged your session as: “{summary}” with a mood of “{mood}.” Nice work closing the loop! 🦊✅"
+
+    return jsonify({
+        "message": response_message,
+        "summary": summary,
+        "mood": mood
+    })
 
 if __name__ == "__main__":
     print("Starting OutFoxed API server...")

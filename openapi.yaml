@@ -22,14 +22,53 @@ paths:
                   default: 25
       responses:
         "200":
-                       message:
-                type: string
-              note:
-                type: string
-              suggestion:
-                type: string
-              tip:
-                type: string
-              duration:
-                type: integer
+          description: Timer started message
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  note:
+                    type: string
+                  suggestion:
+                    type: string
+                  tip:
+                    type: string
+                  duration:
+                    type: integer
+
+  /log-session:
+    post:
+      operationId: logSession
+      summary: Log the result of a completed focus session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                summary:
+                  type: string
+                  description: What the user accomplished during the session
+                mood:
+                  type: string
+                  description: Optional mood descriptor (e.g., focused, stressed, proud)
+      responses:
+        "200":
+          description: Session logged confirmation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  summary:
+                    type: string
+                  mood:
+                    type: string
+CTRL + X
 
