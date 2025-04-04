@@ -14,12 +14,19 @@ def start_timer():
     data = request.get_json()
     duration = data.get("duration", 25)
 
-    message = f"Pomodoro timer started for {duration} minutes! 🦊⏳"
+    message = f"⏱️ Your {duration}-minute focus session has begun! I’m cheering you on — stay present, stay kind to yourself. 🦊✨"
+    note = "While I can’t track the time or alert you when it ends (GPT isn’t great at time travel… yet), I’ll be right here when you return."
+    suggestion = "When you’re done, say 'log my session' and I’ll record your progress!"
+    tip = "Put your phone face-down — your future self will thank you. 💡📴"
 
     return jsonify({
         "message": message,
+        "note": note,
+        "suggestion": suggestion,
+        "tip": tip,
         "duration": duration
     })
+
 @app.route("/openapi.yaml", methods=["GET"])
 def serve_openapi():
     return send_file("openapi.yaml", mimetype="application/yaml")
