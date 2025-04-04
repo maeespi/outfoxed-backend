@@ -178,21 +178,6 @@ def get_tasks():
         "message": "📋 All current tasks:",
         "tasks": tasks
     })
-@app.route("/get-tasks", methods=["GET"])
-def get_tasks():
-    category = request.args.get("category")
-
-    if category:
-        filtered_tasks = [task for task in tasks if task.get("category") == category]
-        return jsonify({
-            "message": f"📋 Tasks in category: {category}",
-            "tasks": filtered_tasks
-        })
-
-    return jsonify({
-        "message": "📋 All current tasks:",
-        "tasks": tasks
-    })
 
 if __name__ == "__main__":
     print("Starting OutFoxed API server...")
