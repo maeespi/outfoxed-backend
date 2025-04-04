@@ -178,6 +178,24 @@ def get_tasks():
         "message": "📋 All current tasks:",
         "tasks": tasks
     })
+@app.route("/complete-task", methods=["POST"])
+def complete_task():
+    data = request.get_json()
+    title = data.get("title")
+
+    if not title:
+        return jsonify({"error": "Task title is required to complete it."}), 400
+
+    for task in tasks:
+        if task["title"].lower() == title.lower():
+            tasks.remove(task)
+            return jsonify({
+                "message": f"✅ Task '{title}' marked as complete and removed from your list!"
+            })
+
+    return jsonify({
+        "message": f"⚠️ Task '{title}' not found in your current list. Double-check the title?"
+    }), 404
 
 if __name__ == "__main__":
     print("Starting OutFoxed API server...")
