@@ -56,6 +56,10 @@ paths:
                 mood:
                   type: string
                   description: Optional mood descriptor (e.g., focused, stressed, proud)
+                category:
+                  type: string
+                  description: Optional tag for grouping logs (e.g., work, school, self-care)
+
       responses:
         "200":
           description: Session logged confirmation
@@ -70,5 +74,6 @@ paths:
                     type: string
                   mood:
                     type: string
-CTRL + X
+                  category:
+                    type: string
 

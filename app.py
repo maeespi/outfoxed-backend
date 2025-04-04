@@ -123,14 +123,21 @@ def log_session():
     data = request.get_json()
     summary = data.get("summary", "No summary provided.")
     mood = data.get("mood", "neutral")
+    category = data.get("category", "general")
 
-    response_message = f"Got it! You logged your session as: “{summary}” with a mood of “{mood}.” Nice work closing the loop! 🦊✅"
+    message = (
+        f"🎉 Session logged successfully!\n\n"
+        f"You completed: “{summary}” under the **{category}** category.\n"
+        f"Mood: *{mood}* — Nice work closing the loop! 🦊✅"
+    )
 
     return jsonify({
-        "message": response_message,
+        "message": message,
         "summary": summary,
-        "mood": mood
+        "mood": mood,
+        "category": category
     })
+
 
 if __name__ == "__main__":
     print("Starting OutFoxed API server...")
