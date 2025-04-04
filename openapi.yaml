@@ -22,13 +22,14 @@ paths:
                   default: 25
       responses:
         "200":
-          description: Timer started message
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  duration:
-                    type: integer
+                       message:
+                type: string
+              note:
+                type: string
+              suggestion:
+                type: string
+              tip:
+                type: string
+              duration:
+                type: integer
+
