@@ -138,6 +138,31 @@ def log_session():
         "category": category
     })
 
+# Temporary in-memory task list (restarts when server restarts)
+tasks = []
+
+@app.route("/add-task", methods=["POST"])
+def add_task():
+    data = request.get_json()
+    title = data.get("title")
+    category = data.get("category", "general")
+    due_date = data.get("dueDate", None)
+
+    if not title:
+        return jsonify({"error": "Task title is required."}), 400
+
+    task = {
+        "title": title,
+        "category": category,
+        "dueDate": due_date
+    }
+
+    tasks.append(task)
+
+    return jsonify({
+        "message": f"📝 Task added: '{title}' under **{category}**.",
+        "task": task
+    })
 
 if __name__ == "__main__":
     print("Starting OutFoxed API server...")

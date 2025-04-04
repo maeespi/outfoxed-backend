@@ -77,3 +77,44 @@ paths:
                   category:
                     type: string
 
+  /add-task:
+    post:
+      operationId: addTask
+      summary: Add a new task to the system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: Title or description of the task
+                category:
+                  type: string
+                  description: Task category (e.g., school, work, self-care)
+                dueDate:
+                  type: string
+                  format: date
+                  description: Optional due date (YYYY-MM-DD)
+      responses:
+        "200":
+          description: Task added confirmation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  task:
+                    type: object
+                    properties:
+                      title:
+                        type: string
+                      category:
+                        type: string
+                      dueDate:
+                        type: string
+                        format: date
